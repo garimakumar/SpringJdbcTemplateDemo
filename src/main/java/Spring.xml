@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="student" class="com.example.Student">
+<property name="sid" value="1"></property>
+<property name="sname" value="garima"></property>
+<property name="semail" value="g@c.c"></property>
+<property name="phone" value="5454555"></property>
+</bean>
+
+<bean id="studentdao" class="com.example.StudentDAO">
+<property name="temp" ref="tempref"></property> 
+</bean>
+
+<!-- This dummy object temp will get activated by adding these certain set of classes : JdbcTemplate and DriverManagerDataSource -->
+
+<bean id="tempref" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dsref"></property>
+</bean>
+
+<bean id="dsref" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="DriverClassName" value="com.mysql.jdbc.Driver"></property>
+<property name="url" value="jdbc:mysql://localhost:3306/db1"></property>
+<property name="username" value="root"></property>
+<property name="password" value="Garima@1991"></property>
+</bean>
+
+</beans>
+
